@@ -4,9 +4,17 @@ app.use(express.json());
 const db = require("./db.js");
 require("dotenv").config();
 
+// Middleware Function
+const logRequest = (req,res,next) => {
+  console.log(`[${new Date().toLocaleString()}] Request made to: ${req.originalUrl}`)
+  next();
+}
+
+app.use(logRequest);
 app.get("/", (req, res) => {
   res.send("Connect to database");
 });
+
 
 //  Import Router files
 
