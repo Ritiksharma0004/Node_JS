@@ -11,7 +11,7 @@ fs.appendFile("db.js","", ()=>{
     console.log("file created")
 })
 
-
+console.log(os.uptime().toString());
 
 
 /////////////    connecting another file //////////////////////////////

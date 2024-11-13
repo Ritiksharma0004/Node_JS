@@ -49,7 +49,10 @@ router.put("/:id", async (req, res) => {
     const personId = req.params.id;
     const updatedPersonData = req.body;
 
-    const response = await Person.findByIdAndUpdate( personId,updatedPersonData,{
+    const response = await Person.findByIdAndUpdate(
+      personId,
+      updatedPersonData,
+      {
         new: true,
         runValidators: true,
       }
@@ -67,7 +70,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async(req,res)=> {
+router.delete("/:id", async (req, res) => {
   try {
     const personId = req.params.id;
 
@@ -75,12 +78,12 @@ router.delete("/:id", async(req,res)=> {
     if (!response) {
       return res.status(404).json({ error: "Person not found" });
     }
-    console.log(`person_id: ${personId} deleted` );
-    res.status(200).json({message: "person deleted sucessfully"});
+    console.log(`person_id: ${personId} deleted`);
+    res.status(200).json({ message: "person deleted sucessfully" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: `Internal Server Error` });
   }
-})
+});
 
 module.exports = router;
